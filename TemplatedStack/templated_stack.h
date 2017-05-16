@@ -1,18 +1,20 @@
-#include <string>
+// #include <bits/stdc++.h>
+// #include <string>
 template <typename T>
 class mNode {
 public:
 	T data;
 	mNode* next;
-	/* mNode() { } */
-	mNode(T d) { 
-		data = d;
-		next = NULL;
-	}
+	mNode(T d);
 	
 };
+template <class T> mNode<T>::mNode(T d) {
+	data = d;
+	next = NULL;
+}
 template <typename T>
 class mStack {
+public:
 	mNode<T> *topOfStack;
 	mStack();	
 	void push(T data);
