@@ -4,7 +4,7 @@ class mNode {
 public:
 	T data;
 	mNode* next;
-	mNode() { }
+	/* mNode() { } */
 	mNode(T d) { 
 		data = d;
 		next = NULL;
@@ -14,17 +14,25 @@ public:
 template <typename T>
 class mStack {
 	mNode<T> *topOfStack;
-	mStack() {
-		topOfStack = NULL;
-	}		
-	void push(T data) {
-		mNode<T>* newNode = new mNode<T>(data);
-		newNode->next = topOfStack;
-		topOfStack = newNode;
-	}
-	T pop() {
-		T data = topOfStack->data;
-		topOfStack = topOfStack->next;
-		return data;
-	}
+	mStack();	
+	void push(T data);
+	T pop();
 };
+
+template <class T> mStack<T>::mStack() {
+	topOfStack = NULL;
+}
+
+template <class T> void mStack<T>::push(T data) {
+	mNode<T>* newNode = new mNode<T>(data);
+	newNode->next = topOfStack;
+	topOfStack = newNode;
+}
+
+template <class T> T mStack<T>::pop(void) {
+	mNode<T>* tempTop = topOfStack;
+	T dataToBePopped = tempTop->data;
+	topOfStack = topOfStack->next;
+	delete tempTop;
+	return dataToBePopped;
+}
