@@ -4,3 +4,4 @@
 *o
 list_swig-1.0.egg-info
 build/
+list_wrap.cpp
